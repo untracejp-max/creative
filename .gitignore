@@ -1,0 +1,9 @@
+# GA4 などの認証情報は絶対にコミットしない
+*service-account*.json
+*-sa-key*.json
+ga4-key*.json
+credentials*.json
+.env
+.env.*
+# 取得したレポート(ローカル/セッション内の一時出力)
+ga4-reports/
