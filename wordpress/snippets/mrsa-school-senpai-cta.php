@@ -6,18 +6,17 @@
  *    （学費・入学条件を読んだ直後に、在籍先輩の /senpai/○○/ ページへ進めるように）
  * 2) スマホのタブバーに「先輩に相談」ボタン（#voices へ移動）。
  *    PCのタブバー右の「【有料】この大学の先輩に相談」はスマホCSSで非表示のため、その代わり。
- * 3) スマホの先輩カードを「写真の右にカテゴリー・名前」の横並びに。
+ * 3) スマホの先輩カードを「写真の右にカテゴリー・名前」の横並びにし、「先輩に相談する」をピンクのボタンに。
  * 4) 先輩カードと上記ボタンのクリックを GA4 に senpai_cta_click（cta_location = voices / tabbar_sp）で送る。
  *
  * 先輩がいない大学(#voices がない)では何もしない。
  * 本体スニペット「TP大学詳細ページ ショートコード [tp_univ_page]」は触らず、
  * do_shortcode_tag フィルターで出力を並べ替える。無効化すれば元に戻る。
  *
- * 確認中: MRSA_SENPAI_CTA_LIVE が false の間は、ログイン中の編集者か ?senpai_cta=1 のときだけ反映。
- * 公開するときは true にする。
+ * 2026-11-27 公開済み(true)。MRSA_SENPAI_CTA_LIVE を false にすると、ログイン中の編集者か ?senpai_cta=1 のときだけ反映。
  */
 if (!defined('MRSA_SENPAI_CTA_LIVE')) {
-    define('MRSA_SENPAI_CTA_LIVE', false);
+    define('MRSA_SENPAI_CTA_LIVE', true);
 }
 
 add_filter('do_shortcode_tag', function ($out, $tag) {
@@ -69,6 +68,7 @@ add_filter('do_shortcode_tag', function ($out, $tag) {
         . '.tp-proflist .tp-prof__n{grid-column:2;grid-row:2;align-self:start;margin:0}'
         . '.tp-proflist .tp-prof__p,.tp-proflist .tp-prof__cta{grid-column:1/-1}'
         . '.tp-proflist .tp-prof__p{margin-top:10px}'
+        . '.tp-proflist .tp-prof__cta{display:block;margin-top:14px;padding:12px 16px;border-radius:999px;background:#ff3773;color:#fff;text-align:center;font-weight:700}'
         . '}';
     $js = '<script>document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[data-senpai-cta]"):null;'
         . 'if(!a||typeof window.gtag!=="function")return;window.gtag("event","senpai_cta_click",{cta_location:a.getAttribute("data-senpai-cta"),'
