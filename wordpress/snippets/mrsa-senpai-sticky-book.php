@@ -52,7 +52,7 @@ add_action('wp_footer', function () {
   a.href = src.href;
   a.target = '_blank';
   a.rel = 'noopener';
-  a.innerHTML = 'この先輩にLINEで予約する<small>オンラインで直接話せます</small>';
+  a.innerHTML = 'この先輩にLINEで予約する<small>オンライン30分 ¥3,000〜</small>';
   bar.appendChild(a);
   document.body.appendChild(bar);
   document.body.classList.add('mrsa-sbook-on');
