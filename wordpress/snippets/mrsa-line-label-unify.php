@@ -11,10 +11,10 @@
  *   目印: 特徴 / 学費 / カウンセラー / タブ / その他(元の文言)
  * - 本体スニペット(id 26)と mrsa-school-senpai-cta(id 39)には触らず、do_shortcode_tag(優先度20)で置き換える。
  *
- * MRSA_LINE_UNIFY_LIVE が false の間は、ログイン中の編集者か ?line_unify=1 のときだけ反映。
+ * 2026-11-27 公開済み(true)。MRSA_LINE_UNIFY_LIVE を false にすると、、ログイン中の編集者か ?line_unify=1 のときだけ反映。
  */
 if (!defined('MRSA_LINE_UNIFY_LIVE')) {
-    define('MRSA_LINE_UNIFY_LIVE', false);
+    define('MRSA_LINE_UNIFY_LIVE', true);
 }
 
 add_filter('do_shortcode_tag', function ($out, $tag) {

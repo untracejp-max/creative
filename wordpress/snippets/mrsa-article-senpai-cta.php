@@ -9,10 +9,10 @@
  *   対応する「話せるトピック」を持つ先輩 > それ以外。同じ記事では毎回同じ先輩(記事IDで固定)。
  * - 計測: カードのクリックを GA4 に article_senpai_click(senpai_slug, cta_location=mid/end, page_path)で送る。
  *
- * MRSA_ARTICLE_SENPAI_LIVE が false の間は、ログイン中の編集者か ?article_senpai=1 のときだけ反映。
+ * 2026-11-27 公開済み(true)。MRSA_ARTICLE_SENPAI_LIVE を false にすると、、ログイン中の編集者か ?article_senpai=1 のときだけ反映。
  */
 if (!defined('MRSA_ARTICLE_SENPAI_LIVE')) {
-    define('MRSA_ARTICLE_SENPAI_LIVE', false);
+    define('MRSA_ARTICLE_SENPAI_LIVE', true);
 }
 
 function mrsa_article_senpai_pick($post_id, $n = 2) {

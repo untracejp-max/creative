@@ -10,10 +10,10 @@
  * - 計測: カードのクリックを GA4 に talk_senpai_card_click(senpai_slug, card_index)で送る。
  *   /talk→/senpai の遷移は既存の週次データ(GA4_遷移)でも追える。
  *
- * MRSA_TALK_CARDS_LIVE が false の間は、ログイン中の編集者か ?talk_cards=1 のときだけ反映。
+ * 2026-11-27 公開済み(true)。MRSA_TALK_CARDS_LIVE を false にすると、、ログイン中の編集者か ?talk_cards=1 のときだけ反映。
  */
 if (!defined('MRSA_TALK_CARDS_LIVE')) {
-    define('MRSA_TALK_CARDS_LIVE', false);
+    define('MRSA_TALK_CARDS_LIVE', true);
 }
 
 add_action('wp_footer', function () {

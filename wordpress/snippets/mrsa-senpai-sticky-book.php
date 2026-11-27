@@ -9,10 +9,10 @@
  * - 計測: 既存スニペット mrsa-talk-line-click(id 38) が @619nztzb へのクリックを talk_apply_click で送る。
  *   このボタンは link_text「この先輩にLINEで予約する」で本文のボタンと区別できる。新しいイベントは無し。
  *
- * MRSA_SENPAI_STICKY_LIVE が false の間は、ログイン中の編集者か ?senpai_sticky=1 のときだけ反映。
+ * 2026-11-27 公開済み(true)。MRSA_SENPAI_STICKY_LIVE を false にすると、、ログイン中の編集者か ?senpai_sticky=1 のときだけ反映。
  */
 if (!defined('MRSA_SENPAI_STICKY_LIVE')) {
-    define('MRSA_SENPAI_STICKY_LIVE', false);
+    define('MRSA_SENPAI_STICKY_LIVE', true);
 }
 
 add_action('wp_footer', function () {
