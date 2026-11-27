@@ -6,7 +6,8 @@
  *    （学費・入学条件を読んだ直後に、在籍先輩の /senpai/○○/ ページへ進めるように）
  * 2) スマホのタブバーに「先輩に相談」ボタン（#voices へ移動）。
  *    PCのタブバー右の「【有料】この大学の先輩に相談」はスマホCSSで非表示のため、その代わり。
- * 3) 先輩カードと上記ボタンのクリックを GA4 に senpai_cta_click（cta_location = voices / tabbar_sp）で送る。
+ * 3) スマホの先輩カードを「写真の右にカテゴリー・名前」の横並びに。
+ * 4) 先輩カードと上記ボタンのクリックを GA4 に senpai_cta_click（cta_location = voices / tabbar_sp）で送る。
  *
  * 先輩がいない大学(#voices がない)では何もしない。
  * 本体スニペット「TP大学詳細ページ ショートコード [tp_univ_page]」は触らず、
@@ -60,6 +61,14 @@ add_filter('do_shortcode_tag', function ($out, $tag) {
     $css = '.tp-tabbar a.tp-tabbar__sptalk{display:none}'
         . '@media (max-width:768px){'
         . '.tp-tabbar a.tp-tabbar__sptalk,.tp-tabbar a.tp-tabbar__sptalk:hover{display:flex;align-items:center;align-self:stretch;flex:0 0 auto;padding:0 14px;background:#ff3773;color:#fff;font-size:12px;font-weight:700;white-space:nowrap;text-decoration:none}'
+        // 先輩カード: スマホでは写真の右にカテゴリー・名前を並べる
+        . '.tp-proflist a.tp-prof{display:grid;grid-template-columns:72px minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:center}'
+        . '.tp-proflist .tp-prof__tx{display:contents}'
+        . '.tp-proflist .tp-prof__ph{grid-column:1;grid-row:1/3}'
+        . '.tp-proflist .tp-prof__meta{grid-column:2;grid-row:1;align-self:end;flex-wrap:wrap;gap:4px 8px;margin:0}'
+        . '.tp-proflist .tp-prof__n{grid-column:2;grid-row:2;align-self:start;margin:0}'
+        . '.tp-proflist .tp-prof__p,.tp-proflist .tp-prof__cta{grid-column:1/-1}'
+        . '.tp-proflist .tp-prof__p{margin-top:10px}'
         . '}';
     $js = '<script>document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[data-senpai-cta]"):null;'
         . 'if(!a||typeof window.gtag!=="function")return;window.gtag("event","senpai_cta_click",{cta_location:a.getAttribute("data-senpai-cta"),'
